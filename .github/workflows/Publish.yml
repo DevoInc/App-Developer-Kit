@@ -30,7 +30,7 @@ jobs:
         run: npm run build
 
       - name: Run style check
-        run: npm run eslint
+        run: npm run lint
 
       - name: Generate documentation
         run: npm run docs
