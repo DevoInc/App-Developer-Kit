@@ -1,0 +1,15 @@
+{
+    // this file is so we can lint files other than the ones included in tsconfig.json
+    // extend your base config so you don't have to redefine your compilerOptions
+    "extends": "./tsconfig.json",
+    "include": [
+        "src",
+        "test",
+        ".eslintrc.cjs",
+        ".babelrc",
+        "test/.eslintrc.cjs",
+        "webpack/.eslintrc.cjs",
+        "jest.config.ts",
+        "webpack"
+    ]
+}
