@@ -1,5 +1,5 @@
 /**
- * Current user credentials
+ * Current user credentials.
  *
  * @public
  */

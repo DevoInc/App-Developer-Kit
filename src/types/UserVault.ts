@@ -1,5 +1,5 @@
 /**
- * Current user vault from webcore.
+ * Current user vault.
  *
  * @public
  */

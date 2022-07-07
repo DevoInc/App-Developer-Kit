@@ -3,7 +3,7 @@ import { IDevoApp } from './devoApp/DevoApp.Interface';
 import { DevoAppConfig } from './types';
 
 /**
- * Static class that provides DevoApp instance.
+ * Static class that provides a DevoApp instance.
  *
  * @public
  */
@@ -11,7 +11,7 @@ export class DevoAppProvider {
   private static _instance: IDevoApp | undefined = undefined;
 
   /**
-   * Initialize Devo browser app.
+   * Initialize DevoApp instance.
    *
    * @public
    *
@@ -26,7 +26,7 @@ export class DevoAppProvider {
   }
 
   /**
-   * Get DevoAppInstance
+   * Get previusly initialized DevoApp instance.
    *
    * @public
    *

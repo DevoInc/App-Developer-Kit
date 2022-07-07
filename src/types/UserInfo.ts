@@ -3,7 +3,7 @@ import { UserCredentials } from './UserCredentials';
 import { UserVault } from './UserVault';
 
 /**
- * Current user info from webcore.
+ * Current user information.
  *
  * @public
  */

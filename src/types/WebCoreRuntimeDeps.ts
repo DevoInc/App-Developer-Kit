@@ -2,18 +2,18 @@ import { Dates } from './Dates';
 import { UserInfo } from './UserInfo';
 
 /**
- * Web core dependencies type.
+ * Devo web core dependencies.
  *
  * @remarks
  * This type is based on the current WebCore dependency implementation.
- * If you want to use a different implementation for a standalon app,
- * you can implement this interface in a new custom object.
+ * if you want to override these dependencies for a standalone mode,
+ * use the DevoAppProvider's init method with a custom object based on this type.
  *
  * @public
  */
 export type WebCoreRuntimeDeps = {
   /**
-   * goToQuery function that redirects to query search UI
+   * goToQuery function that redirects to query search tab of Devo web.
    */
   readonly goToQuery: (query: string, dates: Dates) => void;
   /**
@@ -21,7 +21,7 @@ export type WebCoreRuntimeDeps = {
    *
    * @remarks
    * This field contain a class that is used to create a notipop alert on the screen.
-   * If you want to use a different implementation for a standalon app,
+   * If you want to use a different implementation for a standalon mode,
    * simply declare a class and pass it here.
    * A NotiPopRequest will be passed to the constructor.
    *

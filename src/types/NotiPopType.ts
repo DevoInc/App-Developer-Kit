@@ -1,5 +1,5 @@
 /**
- * Types of Notipops.
+ * Different types of notifications.
  *
  * @public
  */
