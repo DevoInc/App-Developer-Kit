@@ -4,6 +4,10 @@ Devo Applications Development Kit is the mandatory NPM package to start building
 javascript web browser applications on Devo, it allows you to
 communicate your application with the devo web and APIs.
 
+## Devo Apps
+
+A Devo App is a front-end web browser extension capable of being injected and hosted into the Devo web platform as well as communicating with it and with the collection of HTTP services enabled for Devo customers.
+
 ## Before starting
 
 As a main requirement for the development of applications in Devo it is necessary to have access to the platform and a domain.
@@ -151,3 +155,7 @@ import {
     });
 })();
 ```
+
+## Publishing and hosting
+
+The publishing and hosting process for these applications will be carried out by Devo employees. Please contact [Devo support](https://www.devo.com/legal-hub/support-services/) for this task.
