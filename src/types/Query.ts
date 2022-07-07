@@ -1,7 +1,7 @@
 import { Dates } from './Dates';
 
 /**
- * Devo query
+ * Devo query.
  *
  * @public
  */

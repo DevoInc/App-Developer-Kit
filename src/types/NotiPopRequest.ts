@@ -3,7 +3,7 @@ import { NotiPopSize } from './NotiPopSize';
 import { NotiPopType } from './NotiPopType';
 
 /**
- * Request to create a notipop on the browser
+ * Request to create a notification on the screen.
  *
  * @public
  */

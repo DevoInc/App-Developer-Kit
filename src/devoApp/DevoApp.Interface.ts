@@ -13,7 +13,6 @@ export interface IDevoApp {
    * @public
    */
   getQueryClient(): Promise<IQueryClient>;
-
   /**
    * Get an alerts API client.
    *
@@ -22,16 +21,14 @@ export interface IDevoApp {
    * @param alertsUrl - The alerts API URL.
    */
   getAlertsClient(alertsUrl: string): Promise<IAlertsClient>;
-
   /**
-   * Create a notipop alert on the screen.
+   * Create a notification on the screen.
    *
    * @public
    *
    * @param notipopRequest - Notipop request.
    */
   createNotiPop(notipopRequest: NotiPopRequest): Promise<void>;
-
   /**
    * Calls Devo webcore to obtain user information.
    *

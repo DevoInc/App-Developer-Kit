@@ -1,5 +1,5 @@
 /**
- * Different positions notipops could have in the screen.
+ * Different positions that notifications could have in the screen.
  */
 export type NotiPopPosition =
   | 'top-left'

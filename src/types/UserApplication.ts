@@ -1,5 +1,5 @@
 /**
- * Current user application
+ * Current user application.
  *
  * @public
  */

@@ -1,5 +1,5 @@
 /**
- * From/to date object
+ * From/to date type.
  *
  * @public
  */

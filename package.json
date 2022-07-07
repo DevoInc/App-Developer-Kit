@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/app-developer-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Devo Web Browser Applications Development Kit",
   "main": "index.js",
   "module": "index.esm.js",
