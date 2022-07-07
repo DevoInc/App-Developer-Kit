@@ -24,7 +24,7 @@ Some configuration examples can be found in the [react template project]().
 
 ## Features
 
-You can find the complete documentation of the development kit [here]().
+You can find the complete documentation of the development kit [here](https://devoinc.github.io/App-Developer-Kit/).
 
 - **User information**:
 The IDevoApp instance could be used to obtain the information of the current user who is executing this application in the web browser. 
