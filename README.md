@@ -38,7 +38,7 @@ import {
     IDevoApp, 
     DevoAppProvider, 
     UserInfo,
-} from '@devo/applications-developer-kit';
+} from '@devoinc/app-developer-kit';
 
 (async () => {
     const dApp: IDevoApp = DevoAppProvider.init();
@@ -55,7 +55,7 @@ import {
     IDevoApp, 
     DevoAppProvider, 
     NotipopRequest,
-} from '@devo/applications-developer-kit';
+} from '@devoinc/app-developer-kit';
 
 (async () => {
     const dApp: IDevoApp = DevoAppProvider.init();
@@ -77,7 +77,7 @@ import {
     DevoAppProvider, 
     Query, 
     NotipopRequest 
-} from '@devo/applications-developer-kit';
+} from '@devoinc/app-developer-kit';
 
 (async () => {
     const dApp: IDevoApp = DevoAppProvider.init();
@@ -106,7 +106,7 @@ import {
     IDevoApp, 
     DevoAppProvider, 
     AlertsApiClient,
-} from '@devo/applications-developer-kit';
+} from '@devoinc/app-developer-kit';
 
 (async () => {
     const dApp: IDevoApp = DevoAppProvider.init();
@@ -126,7 +126,7 @@ import {
     DevoAppProvider,
     WebCoreRuntimeDeps,
     Dates,
-} from '@devo/applications-developer-kit';
+} from '@devoinc/app-developer-kit';
 
 (async () => {
     class StandaloneNotipop {
