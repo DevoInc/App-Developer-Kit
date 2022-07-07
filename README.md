@@ -24,7 +24,7 @@ $ npm install @devoinc/app-developer-kit
 
 For these applications to be compatible with Devo and Devo Runner, it will be necessary to configure the javascript bundler so that the result of its process generates a single HTML file with all the javascript code and css styles inline. For this we recommend to use Webpack 5 and the [InlineChunkHtmlPlugin](https://www.npmjs.com/package/inline-chunk-html-plugin) plugin.
 
-A complete usage example for this package can be found in this [react template](https://github.com/DevoInc/App-Template).
+A complete usage example for this package can be found in this [react template](https://github.com/DevoInc/React-App-Template).
 
 ## Features
 
