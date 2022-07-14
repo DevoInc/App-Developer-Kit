@@ -1,5 +1,6 @@
 import { UserApplication } from './UserApplication';
 import { UserCredentials } from './UserCredentials';
+import { UserRole } from './UserRole';
 import { UserVault } from './UserVault';
 
 /**
@@ -40,4 +41,8 @@ export type UserInfo = {
    * credentials
    */
   readonly credentials: UserCredentials;
+  /**
+   * User roles
+   */
+  readonly roles: UserRole[];
 };

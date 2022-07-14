@@ -4,6 +4,7 @@ export * from './UserCredentials';
 export * from './UserApplication';
 export * from './UserVault';
 export * from './UserInfo';
+export * from './UserRole';
 export * from './Dates';
 export * from './QueryResponseResult';
 export * from './CompactQueryResponse';
