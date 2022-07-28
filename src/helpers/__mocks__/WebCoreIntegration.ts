@@ -14,6 +14,7 @@ export const mockedWebCoreIntegrationUserInfo: UserInfo = {
     share: 1,
   },
   applications: [],
+  roles: [],
   credentials: {
     alertsURI: 'mock-alerts-uri',
     apiKey: 'mock-api-key',

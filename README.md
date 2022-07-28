@@ -1,6 +1,6 @@
 # Devo Applications Developer Kit
 
-Devo Applications Development Kit is the mandatory NPM package to start building
+Devo Applications Developer Kit is the mandatory NPM package to start building
 javascript web browser applications on Devo, it allows you to
 communicate your application with the devo web and APIs.
 
