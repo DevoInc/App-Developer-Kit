@@ -77,7 +77,7 @@ describe('DevoApp Base Test', () => {
 
   it('It returns alerts client', async () => {
     const devoApp = new DevoAppTest(userInfoResponse);
-    const alertsClient = await devoApp.getAlertsClient('mock-url');
+    const alertsClient = await devoApp.getAlertsClient();
     expect(alertsClient).toBeInstanceOf(AlertsClientMock);
   });
 });
