@@ -17,10 +17,8 @@ export interface IDevoApp {
    * Get an alerts API client.
    *
    * @public
-   *
-   * @param alertsUrl - The alerts API URL.
    */
-  getAlertsClient(alertsUrl: string): Promise<IAlertsClient>;
+  getAlertsClient(): Promise<IAlertsClient>;
   /**
    * Create a notification on the screen.
    *

@@ -28,10 +28,11 @@ export abstract class DevoAppBase implements IDevoApp {
     return queryClient;
   }
 
-  public async getAlertsClient(alertsUrl: string): Promise<IAlertsClient> {
+  public async getAlertsClient(): Promise<IAlertsClient> {
     const userInfo = await this.getUserInfo();
     const standAloneToken = userInfo.credentials.standAloneToken;
     const alertsConfig: IAlertsConfig = new AlertsConfig(standAloneToken);
+    const alertsUrl = userInfo.credentials.alertsURI;
 
     const alertsClient: IAlertsClient = new AlertsClient(
       alertsConfig,
