@@ -21,7 +21,7 @@ import {
   DevoAppProvider,
   Query,
   NotiPopRequest,
-} from '@devo/applications-developer-kit';
+} from '@devoinc/applications-developer-kit';
 
 (async () => {
   const dApp: IDevoApp = DevoAppProvider.init();
