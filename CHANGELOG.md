@@ -1,5 +1,9 @@
 # Devo App Developer Kit
 
+## v1.2.0
+
+New query client interface
+
 ## v1.1.2
 
 Avoid passing AlertsUrl to get the alerts client
