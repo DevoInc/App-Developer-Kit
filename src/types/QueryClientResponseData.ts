@@ -3,14 +3,13 @@
  *
  * @public
  */
- export type QueryClientResponseDataType = number | string | boolean;
+export type QueryClientResponseDataType = number | string | boolean;
 
- /**
-  * Query response result as a diccionary of QueryResponseDataType
-  *
-  * @public
-  */
- export type QueryClientResponseData = {
-   [key: string]: QueryClientResponseDataType;
- };
- 
+/**
+ * Query response result as a diccionary of QueryResponseDataType
+ *
+ * @public
+ */
+export type QueryClientResponseData = {
+  [key: string]: QueryClientResponseDataType;
+};

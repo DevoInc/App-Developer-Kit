@@ -9,8 +9,7 @@
  *
  * @public
  */
- export type StreamDates = {
-    from: Date | number;
-    to?: Date | number;
-  };
-  
+export type StreamDates = {
+  from: Date | number;
+  to?: Date | number;
+};

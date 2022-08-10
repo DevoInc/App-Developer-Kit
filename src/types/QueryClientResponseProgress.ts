@@ -3,4 +3,4 @@
  *
  * @public
  */
- export type QueryClientResponseProgress = number[];
+export type QueryClientResponseProgress = number[];

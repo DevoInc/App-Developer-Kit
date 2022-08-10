@@ -6,7 +6,7 @@
  * @param dateTo - end date. If it's a number value, it should be in epoc ms.
  *
  */
- export type Dates = {
+export type Dates = {
   from: Date | number;
   to: Date | number;
 };

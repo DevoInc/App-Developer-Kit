@@ -3,17 +3,16 @@
  *
  * @public
  */
- export type QueryClientResponseMetadataType = {
-    index: number;
-    type: string;
-  };
-  
-  /**
-   * Query response metadata.
-   *
-   * @public
-   */
-  export type QueryClientResponseMetadata = {
-    fields: { [key: string]: QueryClientResponseMetadataType };
-  };
-  
+export type QueryClientResponseMetadataType = {
+  index: number;
+  type: string;
+};
+
+/**
+ * Query response metadata.
+ *
+ * @public
+ */
+export type QueryClientResponseMetadata = {
+  fields: { [key: string]: QueryClientResponseMetadataType };
+};
