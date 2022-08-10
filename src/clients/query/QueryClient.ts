@@ -1,12 +1,21 @@
 import {
-  CompactQueryResponse,
   Query,
-  QueryResponseResult,
+  QueryClientResponse,
+  QueryClientResponseData,
+  QueryClientResponseProgress,
+  QueryClientResponseMetadata,
   UserInfo,
+  StreamQuery as StreamQuery,
 } from '../../types';
 import { IQueryClient } from './QueryClient.interface';
 import { QueryParser } from '../../helpers/QueryParser';
 import { client } from '@devoinc/browser-sdk';
+
+/**
+ * Raw metadata type from the browser-sdk library
+ *
+ */
+export type RawMetadata = { name: string; type: string };
 
 /**
  * Wrapper of Browser SDK Serrea Client.
@@ -26,12 +35,18 @@ export class QueryClient implements IQueryClient {
   }
 
   runQuery(query: Query) {
-    return new Promise<QueryResponseResult[]>((resolve, reject) => {
+    return new Promise<QueryClientResponse>((resolve, reject) => {
       const browserSDKClient = this.getBrowserSDKClient();
 
-      let metadata: any[] | undefined = undefined;
-      const response: QueryResponseResult[] = [];
-
+      let rawMetadata: RawMetadata[] | undefined = undefined;
+      const data: QueryClientResponseData[] = [];
+      const metadata: QueryClientResponseMetadata = {
+        fields: {},
+      };
+      const response: QueryClientResponse = {
+        data,
+        metadata,
+      };
       const proccessedQuery = QueryParser.processQuery(query);
 
       browserSDKClient.streamFetch(
@@ -44,14 +59,20 @@ export class QueryClient implements IQueryClient {
           data: (events: any[][]) => {
             this.processEventData(
               events,
-              metadata,
-              (row: QueryResponseResult) => {
-                response.push(row);
+              rawMetadata,
+              (row: QueryClientResponseData) => {
+                data.push(row);
               }
             );
           },
-          meta: (meta: any[]) => {
-            metadata = meta;
+          meta: (meta: RawMetadata[]) => {
+            rawMetadata = meta; // rawMetadata will be used in processEventData later
+            rawMetadata.forEach((metadataItem, index) => {
+              metadata.fields[metadataItem.name] = {
+                index: index,
+                type: metadataItem.type,
+              };
+            });
           },
           error: (error: any) => {
             reject(error);
@@ -64,77 +85,52 @@ export class QueryClient implements IQueryClient {
     });
   }
 
-  runCompactQuery(query: Query) {
-    return new Promise<CompactQueryResponse>((resolve, reject) => {
-      const browserSDKClient = this.getBrowserSDKClient();
-      const proccessedQuery = QueryParser.processQuery(query);
-
-      browserSDKClient.streamFetch(
-        {
-          query: proccessedQuery.queryString,
-          dateFrom: proccessedQuery.dates.from,
-          dateTo: proccessedQuery.dates.to,
-        },
-        {
-          meta: (meta: any[]) => {
-            const result: CompactQueryResponse = {
-              fields: {},
-            };
-
-            meta.forEach((metadataItem, index) => {
-              result.fields[metadataItem.name] = {
-                index: index,
-                type: metadataItem.type,
-              };
-            });
-
-            resolve(result);
-          },
-          error: (error: any) => {
-            reject(error);
-          },
-        }
-      );
-    });
-  }
-
   runStreamQuery(
-    query: string,
-    dateFrom: Date | undefined,
-    cbData: (dataRow: QueryResponseResult) => void,
-    cbError: (error: Error) => void
+    query: StreamQuery,
+    cbData: (row: QueryClientResponseData) => void,
+    cbProgress: (progress: QueryClientResponseProgress) => void,
+    cbError: (error: Error) => void,
+    cbDone: () => void
   ) {
     const client = this.getBrowserSDKClient();
 
-    let metadata: any[] | undefined;
+    let rawMetadata: RawMetadata[] | undefined;
+    const dateFrom = query.dates.from ? query.dates.from : Date.now();
+    const dateTo = query.dates.to ? query.dates.to : -1;
 
     const stream = client.streamFetch(
       {
-        query: query,
-        dateFrom: dateFrom || new Date(Date.now()),
-        dateTo: -1,
+        query: query.queryString,
+        dateFrom,
+        dateTo,
       },
       {
         data: (events: any[][]) => {
-          this.processEventData(events, metadata, cbData);
+          this.processEventData(events, rawMetadata, cbData);
         },
-        meta: (meta: any[]) => {
-          metadata = meta;
+        meta: (meta: RawMetadata[]) => {
+          rawMetadata = meta;
+        },
+        progress: (progress: QueryClientResponseProgress) => {
+          cbProgress(progress);
         },
         error: (error: Error) => {
           cbError(error);
         },
         done: () => {
-          cbError(new Error('Stream query is done'));
+          cbDone();
         },
       }
     );
 
-    const onClose = () => {
-      stream.abort();
+    const abort = () => {
+      if (stream) {
+        // stream can be falsy. See https://github.com/DevoInc/browser-sdk/blob/ac19cafaf01fa336a8f4ac988c1157f2f4f101bd/lib/client.js#L58
+        stream.abort();
+      }
     };
 
-    return onClose;
+    return abort;
   }
 
   /**
@@ -146,15 +142,17 @@ export class QueryClient implements IQueryClient {
    */
   private getBrowserSDKClient() {
     const credentials = this._userInfo.credentials;
-
-    const serreaUrl = credentials.serrea;
-    const apiKey = credentials.apiKey;
-    const apiSecret = credentials.apiSecret;
+    let token = '';
+    if (credentials.standAloneToken) {
+      // serrea authentication requires a Bearer token. We need to append it here.
+      token = `Bearer ${credentials.standAloneToken}`;
+    }
 
     return client({
-      url: serreaUrl,
-      apiKey: apiKey,
-      apiSecret: apiSecret,
+      url: credentials.serrea,
+      apiKey: credentials.apiKey,
+      apiSecret: credentials.apiSecret,
+      token,
     });
   }
 
@@ -165,21 +163,21 @@ export class QueryClient implements IQueryClient {
    *
    * @private
    *
-   * @param eventRows - rows of data
+   * @param events - event with data. Each event is an array of data.
    * @param metadata - metadata of the query
    * @param cbData - callback to process data
    */
   private processEventData(
-    eventRows: any[][],
-    metadata: any[] | undefined,
-    cbData: (dataRow: QueryResponseResult) => void
+    events: any[][],
+    metadata: RawMetadata[] | undefined,
+    cbData: (row: QueryClientResponseData) => void
   ) {
-    eventRows.forEach((row) => {
-      const result: QueryResponseResult = {};
+    events.forEach((event) => {
+      const result: QueryClientResponseData = {};
       if (metadata) {
         metadata.forEach((metadataColumn, index) => {
           const columnName: string = metadataColumn.name;
-          result[columnName] = row[index];
+          result[columnName] = event[index];
         });
       }
       cbData(result);
