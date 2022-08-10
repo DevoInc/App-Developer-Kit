@@ -62,41 +62,14 @@ import {
     const notipop: NotipopRequest = {
         title: 'Hello world',
         text: '...',
-        type: 'ok',
+        type: 'info',
     };
-    dApp.createNotipop(notipop);
+    await dApp.createNotiPop(notipop);
 })();
 ```
 
 - **Devo queries**:
-The IDevoApp instance could be used to make queries on Devo query engine. The different operations provided here are a wrapper of this other [package](https://github.com/DevoInc/browser-sdk). It is intended to be consumed in a simple way with async/await syntax and masking the obtaining of the user credentials as well as the service URL.
-
-```ts
-import { 
-    IDevoApp, 
-    DevoAppProvider, 
-    Query, 
-    NotipopRequest 
-} from '@devoinc/app-developer-kit';
-
-(async () => {
-    const dApp: IDevoApp = DevoAppProvider.init();
-
-    const query: Query = {
-        queryString: `
-            from ...
-            select ...
-        `,
-        dates: {
-            from: new Date('...').getMilliseconds(),
-            to: new Date('...').getMilliseconds(),
-        },
-    };
-    const queryClient: IQueryClient = await dApp.getQueryClient();
-    const queryResponse = await queryClient.runQuery(query, dates);
-    console.log(queryResponse);
-})();
-```
+The IDevoApp instance could be used to make queries on Devo query engine. You could found a complete documentation about Devo queries [here](extendedDoc/Queries.md).
 
 - **Devo alerts**:
 The IDevoApp instance could be used to operate with Devo alerts. You could found a complete documentation about Devo alerts [here](https://docs.devo.com/space/latest/95128644/Alerts%20API) and the client reference [here](https://devoinc.github.io/alerts-api-client/).

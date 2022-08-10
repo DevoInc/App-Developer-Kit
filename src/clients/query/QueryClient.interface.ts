@@ -1,4 +1,10 @@
-import { CompactQueryResponse, Query, QueryResponseResult } from '../../types';
+import {
+  Query,
+  QueryClientResponse,
+  QueryClientResponseProgress,
+  QueryClientResponseData,
+  StreamQuery,
+} from '../../types';
 
 /**
  * Client of Serrea API.
@@ -7,47 +13,41 @@ import { CompactQueryResponse, Query, QueryResponseResult } from '../../types';
  */
 export interface IQueryClient {
   /**
-   * Run a single query into Devo query engine.
-   *
+   * Run a single query into Devo query engine. The promise will be fullfiled when all the data has been received.
+   * Both dates (from, to) are required.
    * @public
    *
-   * @param query - Devo query
-   * @param dates - Dates to query
+   * @param query - Devo query to run. See Query type for details.
    * @returns - Query response
    */
-  runQuery(query: Query): Promise<QueryResponseResult[]>;
+  runQuery(query: Query): Promise<QueryClientResponse>;
 
   /**
-   * Run a single query but only return all the columns and column types from the query.
-   *
-   * @public
-   *
-   * @param query - Devo query
-   * @param dates - Dates to query
-   * @returns - CompactQuery Response
-   */
-  runCompactQuery(query: Query): Promise<CompactQueryResponse>;
-
-  /**
-   * Runs a query in stream mode.
-   * This means run the query with no ending date, the query will be running until the stream is closed.
+   * Runs a query in stream mode, with callbacks instead of having to wait
+   * for the response to finish to get the data.
+   * Only the from date is required. The to date is optional. The stream will be left open if the "to" date is falsy.
    *
    * @remarks
    * cbData callback will be triggered after every new single query row is received.
-   * cbError returns any possible error.
+   * cbError returns any possible error. It's a terminal event
+   * cbDone is called when only when dateTo is passed. It's a terminal event.
+   * cbDone won't be called if dateTo is falsy because the stream will never end!
    *
    * @public
    *
-   * @param query - query to execute
-   * @param dateFrom - start date
-   * @param cbData - callback to process data
-   * @param cbError - callback to process error
-   * @returns - Callback to close stream query
+   * @param query - Devo query to run. See StreamQuery type for details.
+   * @param cbData - callback to process every event of data
+   * @param cbProgress - callback to process progress of the response. It is an array that contains only a number
+   * (the eventdate being processed). This event is not called very often, you will see it only in large queries.
+   * @param cbError - callback to process error. This will be the last event in case of failure.
+   * @param cbDone - callback to let the consumer know that the query has finished responding. This will be the last event in case of success.
+   * @returns - Callback to abort the query (fetch abort: https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort)
    */
   runStreamQuery(
-    query: string,
-    dateFrom: Date | undefined,
-    cbData: (data: QueryResponseResult) => void,
-    cbError: (error: Error) => void
+    query: StreamQuery,
+    cbData: (data: QueryClientResponseData) => void,
+    cbProgress: (progress: QueryClientResponseProgress) => void,
+    cbError: (error: Error) => void,
+    cbDone: () => void
   ): () => void;
 }

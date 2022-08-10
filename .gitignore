@@ -3,3 +3,4 @@ coverage
 dist
 .size-snapshot.json
 .DS_Store
+/.project
