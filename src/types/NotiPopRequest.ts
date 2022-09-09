@@ -1,3 +1,4 @@
+import { NotiPopAction } from './NotiPopAction';
 import { NotiPopPosition } from './NotiPopPosition';
 import { NotiPopSize } from './NotiPopSize';
 import { NotiPopType } from './NotiPopType';
@@ -74,4 +75,11 @@ export type NotiPopRequest = {
    * @default 'lticon-exit_close'
    */
   iconCloseClass?: string;
+  /**
+   * Actions that a notification can have.
+   * These will appear as different actionable buttons.
+   *
+   * @optional
+   */
+  actions?: NotiPopAction[];
 };

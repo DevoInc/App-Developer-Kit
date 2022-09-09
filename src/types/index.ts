@@ -8,6 +8,7 @@ export * from './UserRole';
 export * from './Dates';
 export * from './CompactQueryResponse';
 export * from './Query';
+export * from './NotiPopAction';
 export * from './NotiPopRequest';
 export * from './NotiPopType';
 export * from './NotiPopSize';

@@ -1,5 +1,9 @@
 # Devo App Developer Kit
 
+## v1.3.0
+
+Added the ability to create NotiPops with actions. 
+
 ## v1.2.0
 
 New query client interface
