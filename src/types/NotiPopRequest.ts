@@ -76,9 +76,9 @@ export type NotiPopRequest = {
    */
   iconCloseClass?: string;
   /**
-   * Actions that a notification can have. 
+   * Actions that a notification can have.
    * These will appear as different actionable buttons.
-   * 
+   *
    * @optional
    */
   actions?: NotiPopAction[];
