@@ -15,6 +15,7 @@ export type UserCredentials = {
   };
   readonly marketplaceBundle: string;
   readonly marketplaceURI: string;
+  readonly activeboardsURI: string;
   /**
    * Serrea url
    */

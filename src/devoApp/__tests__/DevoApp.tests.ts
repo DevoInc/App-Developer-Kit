@@ -45,6 +45,7 @@ const mockedUserInfo: UserInfo = {
     },
     marketplaceBundle: 'mock-marketplace-bundle',
     marketplaceURI: 'mock-marketplace-uri',
+    activeboardsURI: 'mock-activeboards-uri',
     serrea: 'mock-serrea',
     standAloneToken: 'mock-stand-alone-token',
   },

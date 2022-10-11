@@ -1,5 +1,9 @@
 # Devo App Developer Kit
 
+## v1.3.1
+
+Added activeboards api url in UserCredentials type  
+
 ## v1.3.0
 
 Added the ability to create NotiPops with actions. 
