@@ -19,10 +19,12 @@ import { DEFAULT_INIT_TIMEOUT } from './DevoApp.constants';
  */
 export class DevoApp extends DevoAppBase {
   protected _config?: DevoAppConfig;
+  protected _unmountCallback?: () => void;
 
   constructor(config?: DevoAppConfig) {
     super();
     this._config = config;
+    this._unmountCallback = config?.onAppUnmount;
 
     WebCoreIntegration.listenForUnmount(() => this.onAppUnmount());
   }
@@ -42,6 +44,10 @@ export class DevoApp extends DevoAppBase {
     if (dependencies.NotiPop) {
       new dependencies.NotiPop(request);
     }
+  }
+
+  setAppUnmountCallback(cb: () => void): void {
+    this._unmountCallback = cb;
   }
 
   private async getRuntimeDependencies(): Promise<WebCoreRuntimeDeps> {

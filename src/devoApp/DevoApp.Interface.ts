@@ -8,6 +8,13 @@ import { NotiPopRequest, Query, UserInfo } from '../types';
  */
 export interface IDevoApp {
   /**
+   * Set the unmount callback to be called when the app is unmounted by Devo WebCore.
+   * 
+   * @param cb 
+   * @public
+   */
+  setAppUnmountCallback(cb: () => void): void;
+  /**
    * Get a query client for Serra API.
    *
    * @public

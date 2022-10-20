@@ -36,6 +36,7 @@ export const WebCoreIntegration: IWebCoreIntegration = {
     const onUnmount = (event: Event) => {
       event.preventDefault();
       unmountCallback();
+      document.removeEventListener('beforeChangeContainer', onUnmount);
     };
     document.addEventListener('beforeChangeContainer', onUnmount);
   },
