@@ -46,6 +46,6 @@ export abstract class DevoAppBase implements IDevoApp {
   abstract getUserInfo(): Promise<UserInfo>;
 
   abstract goToQuery(query: Query): Promise<void>;
-  
+
   abstract setAppUnmountCallback(cb: () => void): void;
 }
