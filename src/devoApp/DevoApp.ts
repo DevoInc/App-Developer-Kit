@@ -64,9 +64,8 @@ export class DevoApp extends DevoAppBase {
   }
 
   private onAppUnmount(): void {
-    const onAppUnmount = this._config?.onAppUnmount;
-    if (onAppUnmount) {
-      onAppUnmount();
+    if (this._unmountCallback) {
+      this._unmountCallback();
     }
   }
 }
