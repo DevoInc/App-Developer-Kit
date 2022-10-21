@@ -6,4 +6,5 @@ export class DevoAppMock implements IDevoApp {
   createNotiPop = jest.fn();
   getUserInfo = jest.fn();
   goToQuery = jest.fn();
+  setAppUnmountCallback = jest.fn();
 }

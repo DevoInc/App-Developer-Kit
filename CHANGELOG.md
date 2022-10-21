@@ -1,5 +1,11 @@
 # Devo App Developer Kit
 
+## v1.3.2
+
+fix: Remove the listener related to the unmount of the dApp so that past executions are not queued.
+
+Add the ability to change the callback to unmount the dApp at any time, not just at instantiation.
+
 ## v1.3.1
 
 Added activeboards api url in UserCredentials type  
