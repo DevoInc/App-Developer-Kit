@@ -31,7 +31,8 @@ class DevoAppTest extends DevoAppBase implements IDevoApp {
   createNotiPop(_request: NotiPopRequest): Promise<void> {
     return new Promise<void>((resolve) => resolve());
   }
-  setAppUnmountCallback(_cb: () => void): void {}
+
+  setAppUnmountCallback(_cb: () => void): void {} // eslint-disable-line @typescript-eslint/no-empty-function
 }
 
 const mockedUserInfo: UserInfo = {
