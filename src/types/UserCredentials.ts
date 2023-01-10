@@ -4,7 +4,6 @@
  * @public
  */
 export interface UserCredentials extends Readonly<Record<string, any>> {
-
   // Credentials for the current user
 
   /**
@@ -66,4 +65,4 @@ export interface UserCredentials extends Readonly<Record<string, any>> {
    * Serrea API url
    */
   serrea: string;
-};
+}
