@@ -1,5 +1,13 @@
 # Devo App Developer Kit
 
+## v1.3.3
+
+Added service operations api url in UserCredentials type.
+
+Remove marketplaceBundle field from UserCredentials type.
+
+Better typing for UserCredentials type. Now it will 
+
 ## v1.3.2
 
 fix: Remove the listener related to the unmount of the dApp so that past executions are not queued.
