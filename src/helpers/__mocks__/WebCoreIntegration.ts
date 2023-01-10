@@ -25,7 +25,7 @@ export const mockedWebCoreIntegrationUserInfo: UserInfo = {
       apiKey: 'mock-jwt-api-key',
       jwtUserId: 'mock-jwt-user-id',
     },
-    marketplaceBundle: 'mock-marketplace-bundle',
+    serviceopsURI: 'mock-serviceops-uri',
     marketplaceURI: 'mock-marketplace-uri',
     activeboardsURI: 'mock-activeboards-uri',
     serrea: 'mock-serrea',
