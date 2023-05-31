@@ -64,6 +64,7 @@ const mockedUserInfo: UserInfo = {
     activeboardsURI: 'mock-activeboards-uri',
     serrea: 'mock-serrea',
     standAloneToken: 'mock-stand-alone-token',
+    telemetryURI: 'mock-telemetry-uri',
   },
 };
 

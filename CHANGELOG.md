@@ -1,12 +1,16 @@
 # Devo App Developer Kit
 
+## v1.3.4
+
+Added telemetry URI in UserCredentials type.
+
 ## v1.3.3
 
 Added service operations api url in UserCredentials type.
 
 Remove marketplaceBundle field from UserCredentials type.
 
-Better typing for UserCredentials type. Now it will 
+Better typing for UserCredentials type. Now it will
 
 ## v1.3.2
 
@@ -16,11 +20,11 @@ Add the ability to change the callback to unmount the dApp at any time, not just
 
 ## v1.3.1
 
-Added activeboards api url in UserCredentials type  
+Added activeboards api url in UserCredentials type
 
 ## v1.3.0
 
-Added the ability to create NotiPops with actions. 
+Added the ability to create NotiPops with actions.
 
 ## v1.2.0
 

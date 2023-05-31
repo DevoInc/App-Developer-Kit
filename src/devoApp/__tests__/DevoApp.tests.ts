@@ -48,6 +48,7 @@ const mockedUserInfo: UserInfo = {
     serviceopsURI: 'mock-serviceops-uri',
     serrea: 'mock-serrea',
     standAloneToken: 'mock-stand-alone-token',
+    telemetryURI: 'mock-telemetry-uri',
   },
 };
 
