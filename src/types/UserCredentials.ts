@@ -65,4 +65,8 @@ export interface UserCredentials extends Readonly<Record<string, any>> {
    * Serrea API url
    */
   serrea: string;
+  /**
+   * Telemetry API url
+   */
+  telemetryURI: string;
 }
