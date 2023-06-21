@@ -1,5 +1,9 @@
 # Devo App Developer Kit
 
+## v2.0.0
+
+Make mandatory to include the app info parameter in the query client.
+
 ## v1.3.4
 
 Added telemetry URI in UserCredentials type.
