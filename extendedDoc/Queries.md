@@ -36,6 +36,13 @@ import {
       to: new Date('...').getMilliseconds(),
     },
   };
+
+  // AppInfo allow to log the origin of the query
+  const appInfo: AppInfo = {
+    application: "app1",
+    component: "cmp1",
+  }
+
   const queryClient: IQueryClient = await dApp.getQueryClient();
   const queryResponse = await queryClient.runQuery(query, dates);
   console.log(queryResponse);
