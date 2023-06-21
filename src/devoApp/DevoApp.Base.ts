@@ -8,6 +8,7 @@ import {
   IConfig as IAlertsConfig,
 } from '@devoinc/alerts-api-client';
 import { AlertsConfig } from '../clients/alerts/AlertsConfig';
+import { AppInfo } from '../types/AppInfo';
 
 /**
  * DevoApp abstract base class.
@@ -22,9 +23,9 @@ import { AlertsConfig } from '../clients/alerts/AlertsConfig';
  * @internal
  */
 export abstract class DevoAppBase implements IDevoApp {
-  public async getQueryClient(): Promise<IQueryClient> {
+  public async getQueryClient(appInfo: AppInfo): Promise<IQueryClient> {
     const userInfo = await this.getUserInfo();
-    const queryClient: IQueryClient = new QueryClient(userInfo);
+    const queryClient: IQueryClient = new QueryClient(userInfo, appInfo);
     return queryClient;
   }
 
