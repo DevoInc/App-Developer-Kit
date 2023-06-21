@@ -1,4 +1,5 @@
 import { Dates, Query } from '../types';
+import { AppInfo } from '../types/AppInfo';
 
 /**
  * Process and parse the query before sending it to the Serra API.
@@ -21,7 +22,7 @@ export interface IQueryParser {
    *
    * @returns - Proccessed query
    */
-  processQuery: (query: Query) => Query;
+  processQuery: (query: Query, appInfo?: AppInfo) => Query;
   /**
    * Replace query dates range if query data source is a lookup table
    * using today dates range.
