@@ -22,7 +22,7 @@ export interface IQueryParser {
    *
    * @returns - Proccessed query
    */
-  processQuery: (query: Query, appInfo?: AppInfo) => Query;
+  processQuery: (query: Query, appInfo: AppInfo) => Query;
   /**
    * Replace query dates range if query data source is a lookup table
    * using today dates range.

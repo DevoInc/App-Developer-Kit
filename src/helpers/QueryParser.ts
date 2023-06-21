@@ -4,27 +4,22 @@ import { IQueryParser } from './QueryParser.interface';
 
 const QUERY_LOOKUPLIST_START = 'from my.lookuplist.';
 
-const addPragmas = (queryString: string, appInfo?: AppInfo): string => {
-  if(appInfo?.application) {
-    queryString += ` pragma comment.application: "${appInfo.application}"`;
-  }
-
-  if(appInfo?.component) {
-    queryString += ` pragma comment.component: "${appInfo.component}"`;
-  }
+const addPragmas = (queryString: string, appInfo: AppInfo): string => {
+  queryString += ` pragma comment.application: "${appInfo.application}"`;
+  queryString += ` pragma comment.component: "${appInfo.component}"`;
 
   return queryString;
-}
+};
 
 export const QueryParser: IQueryParser = {
-  processQuery: (query: Query, appInfo?: AppInfo): Query => {
+  processQuery: (query: Query, appInfo: AppInfo): Query => {
     const processedDates = QueryParser.processQueryDates(
       query.queryString,
       query.dates
     );
     const result: Query = {
       queryString: addPragmas(query.queryString, appInfo),
-      dates: processedDates
+      dates: processedDates,
     };
     return result;
   },
