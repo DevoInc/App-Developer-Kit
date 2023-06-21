@@ -10,6 +10,7 @@ import {
 import { IQueryClient } from './QueryClient.interface';
 import { QueryParser } from '../../helpers/QueryParser';
 import { client } from '@devoinc/browser-sdk';
+import { AppInfo } from '../../types/AppInfo';
 
 /**
  * Raw metadata type from the browser-sdk library
@@ -29,9 +30,11 @@ export type RawMetadata = { name: string; type: string };
  */
 export class QueryClient implements IQueryClient {
   private readonly _userInfo: UserInfo;
+  private readonly _appInfo: AppInfo;
 
-  constructor(userInfo: UserInfo) {
+  constructor(userInfo: UserInfo, appInfo: AppInfo) {
     this._userInfo = userInfo;
+    this._appInfo = appInfo;
   }
 
   runQuery(query: Query) {
@@ -47,7 +50,7 @@ export class QueryClient implements IQueryClient {
         data,
         metadata,
       };
-      const proccessedQuery = QueryParser.processQuery(query);
+      const proccessedQuery = QueryParser.processQuery(query, this._appInfo);
 
       browserSDKClient.streamFetch(
         {
