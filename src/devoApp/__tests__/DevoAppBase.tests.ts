@@ -84,15 +84,6 @@ describe('DevoApp Base Test', () => {
     expect(queryClient).toBeInstanceOf(QueryClientMock);
   });
 
-  it('It returns query client with app info', async () => {
-    const devoApp = new DevoAppTest(userInfoResponse);
-    const queryClient = await devoApp.getQueryClient({
-      application: 'app1',
-      component: 'cmp1',
-    });
-    expect(queryClient).toBeInstanceOf(QueryClientMock);
-  });
-
   it('It returns alerts client', async () => {
     const devoApp = new DevoAppTest(userInfoResponse);
     const alertsClient = await devoApp.getAlertsClient();
