@@ -43,7 +43,7 @@ import {
     component: "cmp1",
   }
 
-  const queryClient: IQueryClient = await dApp.getQueryClient();
+  const queryClient: IQueryClient = await dApp.getQueryClient(appInfo);
   const queryResponse = await queryClient.runQuery(query, dates);
   console.log(queryResponse);
 })();
