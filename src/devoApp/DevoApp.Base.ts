@@ -21,6 +21,7 @@ import { AppInfo } from '../types/AppInfo';
  * non-related with the webcore must be implemented.
  *
  * @internal
+ * @param appInfo info about the app (id, component) that allows to log the origin of the query
  */
 export abstract class DevoAppBase implements IDevoApp {
   public async getQueryClient(appInfo: AppInfo): Promise<IQueryClient> {
