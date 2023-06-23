@@ -1,6 +1,7 @@
 import { AlertsClientMock } from '../../clients/alerts/__mocks__/AlertsClient';
 import { QueryClientMock } from '../../clients/query/__mocks__/QueryClient';
 import { UserInfo, Query, NotiPopRequest } from '../../types';
+import { AppInfo } from '../../types/AppInfo';
 import { DevoAppBase } from '../DevoApp.Base';
 import { IDevoApp } from '../DevoApp.Interface';
 
@@ -75,7 +76,11 @@ const userInfoResponse = new Promise<UserInfo>((resolve) => {
 describe('DevoApp Base Test', () => {
   it('It returns query client', async () => {
     const devoApp = new DevoAppTest(userInfoResponse);
-    const queryClient = await devoApp.getQueryClient();
+    const appInfo: AppInfo = {
+      application: 'app1',
+      component: 'cmp1',
+    };
+    const queryClient = await devoApp.getQueryClient(appInfo);
     expect(queryClient).toBeInstanceOf(QueryClientMock);
   });
 

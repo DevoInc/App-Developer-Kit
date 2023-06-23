@@ -1,6 +1,7 @@
 import { IClient as IAlertsClient } from '@devoinc/alerts-api-client';
 import { IQueryClient } from '../clients/query/QueryClient.interface';
 import { NotiPopRequest, Query, UserInfo } from '../types';
+import { AppInfo } from '../types/AppInfo';
 /**
  * DevoApp operations.
  *
@@ -19,7 +20,7 @@ export interface IDevoApp {
    *
    * @public
    */
-  getQueryClient(): Promise<IQueryClient>;
+  getQueryClient(appInfo: AppInfo): Promise<IQueryClient>;
   /**
    * Get an alerts API client.
    *
