@@ -70,7 +70,7 @@ export const MockedAppPreferences: WebPreferences = {
   setAppPreferences: (
     appId: number,
     scope: PreferenceScope,
-    settings: object | null
+    settings: object | string | null
   ) => Promise.resolve(Promise.resolve(createSetAppPreferencesResponse)),
 };
 

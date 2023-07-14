@@ -43,7 +43,7 @@ export class PreferencesClient implements IPreferencesClient {
   getAppPreferences(scope: PreferenceScope) {
     return this._webPreferences.getAppPreferences(this._config.appId, scope);
   }
-  setAppPreferences(scope: PreferenceScope, settings: object | null) {
+  setAppPreferences(scope: PreferenceScope, settings: object | string | null) {
     return this._webPreferences.setAppPreferences(
       this._config.appId,
       scope,

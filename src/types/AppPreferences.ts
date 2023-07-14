@@ -43,7 +43,7 @@ export type WebPreferences = {
   readonly setAppPreferences: (
     appId: number,
     scope: PreferenceScope,
-    settings: object | null
+    settings: object | string | null
   ) => Promise<PreferenceResult>;
 };
 

@@ -10,12 +10,12 @@ The webapp provides methods for persisting arbitrary json objects. The Devo App 
   isAllowedMultitenant: () => Promise<boolean>; // Checks if the user is allowed to change the multitenant default settings for the app.
 
   getAppPreferences: (scope: PreferenceScope) => Promise<PreferenceResult>;
-  setAppPreferences: (scope: PreferenceScope, settings: object | null) => Promise<PreferenceResult>;
+  setAppPreferences: (scope: PreferenceScope, settings: object | string | null) => Promise<PreferenceResult>;
 ```
 
 See the jsdocs for more info about types.
 
-The preferences `settings` object is an arbitrary json object.
+The preferences `settings` object can be an arbitrary json object.
 
 This is the meaning of the 3 scopes:
 

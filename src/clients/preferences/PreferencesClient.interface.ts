@@ -36,6 +36,6 @@ export interface IPreferencesClient {
    */
   readonly setAppPreferences: (
     scope: PreferenceScope,
-    settings: object | null
+    settings: object | string | null
   ) => Promise<PreferenceResult>;
 }
