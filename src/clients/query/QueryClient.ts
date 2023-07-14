@@ -35,6 +35,9 @@ export class QueryClient implements IQueryClient {
   constructor(userInfo: UserInfo, appInfo: AppInfo) {
     this._userInfo = userInfo;
     this._appInfo = appInfo;
+    if (!appInfo || !appInfo.application || !appInfo.component) {
+      throw Error('Need to pass AppInfo to get a query client');
+    }
   }
 
   runQuery(query: Query) {

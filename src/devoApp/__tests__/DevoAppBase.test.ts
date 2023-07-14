@@ -1,6 +1,13 @@
 import { AlertsClientMock } from '../../clients/alerts/__mocks__/AlertsClient';
 import { QueryClientMock } from '../../clients/query/__mocks__/QueryClient';
-import { UserInfo, Query, NotiPopRequest } from '../../types';
+import { IWebCoreIntegration } from '../../helpers/WebCoreIntegration.interface';
+import { mockedWebCoreIntegration } from '../../helpers/__mocks__/WebCoreIntegration';
+import {
+  UserInfo,
+  Query,
+  NotiPopRequest,
+  WebCoreRuntimeDeps,
+} from '../../types';
 import { AppInfo } from '../../types/AppInfo';
 import { DevoAppBase } from '../DevoApp.Base';
 import { IDevoApp } from '../DevoApp.Interface';
@@ -27,10 +34,14 @@ class DevoAppTest extends DevoAppBase implements IDevoApp {
     return this._userInfoResponse;
   }
   goToQuery(_query: Query): Promise<void> {
-    return new Promise<void>((resolve) => resolve());
+    return Promise.resolve();
   }
   createNotiPop(_request: NotiPopRequest): Promise<void> {
-    return new Promise<void>((resolve) => resolve());
+    return Promise.resolve();
+  }
+
+  async getRuntimeDependencies(): Promise<WebCoreRuntimeDeps> {
+    return Promise.resolve(mockedWebCoreIntegration.getWebCoreDependencies(0));
   }
 
   setAppUnmountCallback(_cb: () => void): void {} // eslint-disable-line @typescript-eslint/no-empty-function

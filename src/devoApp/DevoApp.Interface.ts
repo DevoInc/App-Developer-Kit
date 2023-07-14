@@ -1,7 +1,13 @@
 import { IClient as IAlertsClient } from '@devoinc/alerts-api-client';
 import { IQueryClient } from '../clients/query/QueryClient.interface';
-import { NotiPopRequest, Query, UserInfo } from '../types';
+import {
+  NotiPopRequest,
+  PreferencesClientConfig,
+  Query,
+  UserInfo,
+} from '../types';
 import { AppInfo } from '../types/AppInfo';
+import { PreferencesClient } from '../clients/preferences/PreferencesClient';
 /**
  * DevoApp operations.
  *
@@ -49,4 +55,16 @@ export interface IDevoApp {
    * @param query - query to be set in the search query tab
    */
   goToQuery(query: Query): Promise<void>;
+
+  /**
+   * Creates a client to manage app preferences
+   *
+   * @public
+   *
+   * @param config - config object for the client
+   * @returns the app preferences client
+   */
+  getPreferencesClient(
+    config: PreferencesClientConfig
+  ): Promise<PreferencesClient>;
 }

@@ -31,71 +31,78 @@ A complete usage example for this package can be found in this [react template](
 You can find the complete reference of the development kit API [here](https://devoinc.github.io/App-Developer-Kit/).
 
 - **User information**:
-The IDevoApp instance could be used to obtain the information of the current user who is executing this application in the web browser. 
+  The IDevoApp instance could be used to obtain the information of the current user who is executing this application in the web browser.
 
 ```ts
-import { 
-    IDevoApp, 
-    DevoAppProvider, 
-    UserInfo,
+import {
+  IDevoApp,
+  DevoAppProvider,
+  UserInfo,
 } from '@devoinc/app-developer-kit';
 
 (async () => {
-    const dApp: IDevoApp = DevoAppProvider.init();
-    const userInfo: UserInfo = await dApp.getUserInfo();
-    console.log(userInfo);
+  const dApp: IDevoApp = DevoAppProvider.init();
+  const userInfo: UserInfo = await dApp.getUserInfo();
+  console.log(userInfo);
 })();
 ```
 
 - **Create notifications messages**:
-The IDevoApp instance could be used to render a devo notification message in the browser.
+  The IDevoApp instance could be used to render a devo notification message in the browser.
 
 ```ts
-import { 
-    IDevoApp, 
-    DevoAppProvider, 
-    NotipopRequest,
+import {
+  IDevoApp,
+  DevoAppProvider,
+  NotipopRequest,
 } from '@devoinc/app-developer-kit';
 
 (async () => {
-    const dApp: IDevoApp = DevoAppProvider.init();
-    const notipop: NotipopRequest = {
-        title: 'Hello world',
-        text: '...',
-        type: 'info',
-    };
-    await dApp.createNotiPop(notipop);
+  const dApp: IDevoApp = DevoAppProvider.init();
+  const notipop: NotipopRequest = {
+    title: 'Hello world',
+    text: '...',
+    type: 'info',
+  };
+  await dApp.createNotiPop(notipop);
 })();
 ```
 
 - **Devo queries**:
-The IDevoApp instance could be used to make queries on Devo query engine. You could found a complete documentation about Devo queries [here](extendedDoc/Queries.md).
+  The IDevoApp instance could be used to make queries on Devo query engine. You could found a complete documentation about Devo queries [here](extendedDoc/Queries.md).
 
 - **Devo alerts**:
-The IDevoApp instance could be used to operate with Devo alerts. You could found a complete documentation about Devo alerts [here](https://docs.devo.com/space/latest/95128644/Alerts%20API) and the client reference [here](https://devoinc.github.io/alerts-api-client/).
+  The IDevoApp instance could be used to operate with Devo alerts. You could found a complete documentation about Devo alerts [here](https://docs.devo.com/space/latest/95128644/Alerts%20API) and the client reference [here](https://devoinc.github.io/alerts-api-client/).
 
 ```ts
-import { 
-    IDevoApp, 
-    DevoAppProvider, 
-    AlertsApiClient,
+import {
+  IDevoApp,
+  DevoAppProvider,
+  AlertsApiClient,
 } from '@devoinc/app-developer-kit';
 
 (async () => {
-    const dApp: IDevoApp = DevoAppProvider.init();
-    const alertsClient: AlertsApiClient.IClient = await dApp.getAlertsClient('alertsApiUrl');
-    const alertDefinitions: AlertsApiClient.AlertDefinition = await alertsClient.getAlerts();
-    console.log(alertDefinitions);
+  const dApp: IDevoApp = DevoAppProvider.init();
+  const alertsClient: AlertsApiClient.IClient = await dApp.getAlertsClient(
+    'alertsApiUrl'
+  );
+  const alertDefinitions: AlertsApiClient.AlertDefinition =
+    await alertsClient.getAlerts();
+  console.log(alertDefinitions);
 })();
 ```
+
+# AppPreferences client
+
+The Devo App Developer Kit helps with using AppPreferences API provided by the webapp. The AppPreferences API allows to persist arbitrary json objects with different scopes. Complete docs for this feature are [here](extendedDoc/AppPreferences.md).
 
 ## Standalone mode
 
 It is possible to initialize the IDevoApp instance to work in standalone mode, in this way, the different dependencies of the application with the Devo web core and API endpoints could be mocked. Just use the init method passing it a specific settings for the 'standaloneDependencies' field as the following example.
 
 ```ts
-import { 
-    IDevoApp, 
+import {
+    IDevoApp,
     DevoAppProvider,
     WebCoreRuntimeDeps,
     Dates,
