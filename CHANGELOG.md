@@ -1,5 +1,9 @@
 # Devo App Developer Kit
 
+## v2.1.0
+
+Added App Prefernences client
+
 ## v2.0.0
 
 Make mandatory to include the app info parameter in the query client.

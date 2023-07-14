@@ -50,7 +50,7 @@ export class DevoApp extends DevoAppBase {
     this._unmountCallback = cb;
   }
 
-  private async getRuntimeDependencies(): Promise<WebCoreRuntimeDeps> {
+  protected async getRuntimeDependencies(): Promise<WebCoreRuntimeDeps> {
     let dependencies: WebCoreRuntimeDeps;
     if (this._config?.standaloneDependencies) {
       dependencies = this._config.standaloneDependencies;

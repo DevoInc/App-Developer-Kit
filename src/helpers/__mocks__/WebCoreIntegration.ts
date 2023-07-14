@@ -1,4 +1,11 @@
-import { NotiPopRequest, UserInfo, WebCoreRuntimeDeps } from '../../types';
+import {
+  NotiPopRequest,
+  PreferenceResult,
+  PreferenceScope,
+  UserInfo,
+  WebCoreRuntimeDeps,
+  WebPreferences,
+} from '../../types';
 import { IWebCoreIntegration } from '../WebCoreIntegration.interface';
 
 export const mockedWebCoreIntegrationUserInfo: UserInfo = {
@@ -43,10 +50,35 @@ class MockedNotipop {
   }
 }
 
+export const createGetAppPreferencesResponse: PreferenceResult = {
+  msg: 'ok',
+  object: 'whatever',
+  status: 0,
+  success: true,
+};
+export const createSetAppPreferencesResponse: PreferenceResult = {
+  msg: 'ok',
+  object: 'whatever',
+  status: 0,
+  success: true,
+};
+export const MockedAppPreferences: WebPreferences = {
+  isAllowedDomain: () => Promise.resolve(true),
+  isAllowedMultitenant: () => Promise.resolve(true),
+  getAppPreferences: (appId: number, scope: PreferenceScope) =>
+    Promise.resolve(createGetAppPreferencesResponse),
+  setAppPreferences: (
+    appId: number,
+    scope: PreferenceScope,
+    settings: object | string | null
+  ) => Promise.resolve(Promise.resolve(createSetAppPreferencesResponse)),
+};
+
 const mockedRuntimeDeps: WebCoreRuntimeDeps = {
   goToQuery: mockedWebCoreIntegrationGoToQuery,
   NotiPop: MockedNotipop,
   userInfo: mockedWebCoreIntegrationUserInfo,
+  AppPreferences: MockedAppPreferences,
 };
 
 class WebCoreIntegrationMock implements IWebCoreIntegration {

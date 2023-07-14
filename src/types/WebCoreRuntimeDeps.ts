@@ -1,3 +1,4 @@
+import { WebPreferences } from './AppPreferences';
 import { Dates } from './Dates';
 import { UserInfo } from './UserInfo';
 
@@ -49,4 +50,8 @@ export type WebCoreRuntimeDeps = {
    * User info
    */
   readonly userInfo: UserInfo;
+  /**
+   * Object that contains functions to check, get and set app preferences
+   */
+  readonly AppPreferences: WebPreferences;
 };

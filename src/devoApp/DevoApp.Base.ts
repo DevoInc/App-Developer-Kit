@@ -1,6 +1,12 @@
 import { QueryClient } from '../clients/query/QueryClient';
 import { IQueryClient } from '../clients/query/QueryClient.interface';
-import { NotiPopRequest, Query, UserInfo } from '../types';
+import {
+  NotiPopRequest,
+  PreferencesClientConfig,
+  Query,
+  UserInfo,
+  WebCoreRuntimeDeps,
+} from '../types';
 import { IDevoApp } from './DevoApp.Interface';
 import {
   Client as AlertsClient,
@@ -9,6 +15,7 @@ import {
 } from '@devoinc/alerts-api-client';
 import { AlertsConfig } from '../clients/alerts/AlertsConfig';
 import { AppInfo } from '../types/AppInfo';
+import { PreferencesClient } from '../clients/preferences/PreferencesClient';
 
 /**
  * DevoApp abstract base class.
@@ -43,6 +50,13 @@ export abstract class DevoAppBase implements IDevoApp {
     return alertsClient;
   }
 
+  public async getPreferencesClient(
+    config: PreferencesClientConfig
+  ): Promise<PreferencesClient> {
+    const dependencies = await this.getRuntimeDependencies();
+    return new PreferencesClient(config, dependencies.AppPreferences);
+  }
+
   abstract createNotiPop(request: NotiPopRequest): Promise<void>;
 
   abstract getUserInfo(): Promise<UserInfo>;
@@ -50,4 +64,6 @@ export abstract class DevoAppBase implements IDevoApp {
   abstract goToQuery(query: Query): Promise<void>;
 
   abstract setAppUnmountCallback(cb: () => void): void;
+
+  protected abstract getRuntimeDependencies(): Promise<WebCoreRuntimeDeps>;
 }

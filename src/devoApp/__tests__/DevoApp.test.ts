@@ -1,6 +1,7 @@
 import { QueryClientMock } from '../../clients/query/__mocks__/QueryClient';
 import { UserInfo, Query, DevoAppConfig, NotiPopRequest } from '../../types';
 import {
+  MockedAppPreferences,
   mockedWebCoreIntegration,
   mockedWebCoreIntegrationGoToQuery,
   mockedWebCoreIntegrationNotipop,
@@ -65,6 +66,7 @@ const mockedConfig: DevoAppConfig = {
     userInfo: mockedUserInfo,
     goToQuery: jest.fn(),
     NotiPop: MockedNotipop,
+    AppPreferences: MockedAppPreferences,
   },
   onAppUnmount: jest.fn(),
 };
@@ -89,7 +91,7 @@ describe('DevoApp Test', () => {
     expect(mockedConfig.onAppUnmount).toHaveBeenCalled();
   });
 
-  it('It use configured user info in case of have it', async () => {
+  it('It user info is present', async () => {
     const devoApp = new DevoApp(mockedConfig);
 
     const userInfo = await devoApp.getUserInfo();

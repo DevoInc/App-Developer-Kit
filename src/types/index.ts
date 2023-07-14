@@ -1,4 +1,6 @@
 export * from './DevoAppConfig';
+export * from './AppInfo';
+export * from './AppPreferences';
 export * from './WebCoreRuntimeDeps';
 export * from './UserCredentials';
 export * from './UserApplication';
