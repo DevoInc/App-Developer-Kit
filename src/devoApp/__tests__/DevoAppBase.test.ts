@@ -1,6 +1,5 @@
 import { AlertsClientMock } from '../../clients/alerts/__mocks__/AlertsClient';
 import { QueryClientMock } from '../../clients/query/__mocks__/QueryClient';
-import { IWebCoreIntegration } from '../../helpers/WebCoreIntegration.interface';
 import { mockedWebCoreIntegration } from '../../helpers/__mocks__/WebCoreIntegration';
 import {
   UserInfo,
