@@ -1,8 +1,12 @@
 # Devo App Developer Kit
 
+## v2.1.1
+
+Fix vulnerability (SNYK-JS-CRYPTOJS-6028119)
+
 ## v2.1.0
 
-Added App Prefernences client
+Added Persistence client, where we can store configuration preferences in JSON format.
 
 ## v2.0.0
 
