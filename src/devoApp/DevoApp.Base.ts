@@ -66,4 +66,6 @@ export abstract class DevoAppBase implements IDevoApp {
   abstract setAppUnmountCallback(cb: () => void): void;
 
   protected abstract getRuntimeDependencies(): Promise<WebCoreRuntimeDeps>;
+
+  abstract isPolicyActionAllowed(action: string, operation: string): boolean;
 }
