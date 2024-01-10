@@ -67,4 +67,14 @@ export interface IDevoApp {
   getPreferencesClient(
     config: PreferencesClientConfig
   ): Promise<PreferencesClient>;
+
+  /**
+   * Checks if the user has a policy
+   *
+   * @public
+   *
+   * @param action - action to perform.
+   * @param operation - Type of action (op_view or op_manage).
+   */
+  isPolicyActionAllowed(action: string, operation: string): boolean;
 }
