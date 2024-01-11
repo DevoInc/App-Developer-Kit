@@ -32,6 +32,9 @@ class DevoAppTest extends DevoAppBase implements IDevoApp {
   getUserInfo(): Promise<UserInfo> {
     return this._userInfoResponse;
   }
+  isPolicyActionAllowed(action: string, operation: string): boolean {
+    return true;
+  }
   goToQuery(_query: Query): Promise<void> {
     return Promise.resolve();
   }

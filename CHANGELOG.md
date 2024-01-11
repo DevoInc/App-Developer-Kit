@@ -1,5 +1,9 @@
 # Devo App Developer Kit
 
+## v2.1.2
+
+MAR-950 Function to check user policies.
+
 ## v2.1.1
 
 Fix vulnerability (SNYK-JS-CRYPTOJS-6028119)

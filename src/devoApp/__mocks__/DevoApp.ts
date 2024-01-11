@@ -6,6 +6,7 @@ export class DevoAppMock implements IDevoApp {
   getPreferencesClient = jest.fn();
   createNotiPop = jest.fn();
   getUserInfo = jest.fn();
+  isPolicyActionAllowed = jest.fn();
   goToQuery = jest.fn();
   setAppUnmountCallback = jest.fn();
 }

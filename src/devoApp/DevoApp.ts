@@ -9,6 +9,8 @@ import {
 import { DevoAppBase } from './DevoApp.Base';
 import { DEFAULT_INIT_TIMEOUT } from './DevoApp.constants';
 
+declare const lt: any;
+
 /**
  * DevoApp class that contains all possible operations.
  *
@@ -32,6 +34,10 @@ export class DevoApp extends DevoAppBase {
   async getUserInfo(): Promise<UserInfo> {
     const dependencies = await this.getRuntimeDependencies();
     return dependencies.userInfo;
+  }
+
+  isPolicyActionAllowed(action: string, operation: string): boolean {
+    return lt.user.isAllowed(action, operation);
   }
 
   async goToQuery(query: Query): Promise<void> {
